@@ -5,8 +5,10 @@ import { PersonalInfo } from "./PersonalInfo";
 import { AppForm, Attributes } from "../types/appForm";
 import { Profile } from "./Profile";
 import { CustomizedQuestions } from "./CustomizedQuestions";
-import { getAppFormData } from "../api/appFormAPI";
+import { getAppFormData, putAppFormData } from "../api/appFormAPI";
 import { AppCard } from "../components/AppCard";
+import { Button, message } from "antd";
+import { LoadingScreen } from "../components/LoadingScreen";
 
 export default function AppMain() {
   const [loading, setLoading] = useState(true);
@@ -28,12 +30,21 @@ export default function AppMain() {
       .catch((err) => setLoading(false));
   }, []);
   useEffect(() => {
-    // console.log((data as AppForm).attributes.profile);
+    console.log(data?.attributes);
   }, [data]);
+  const submit = () => {
+    setLoading(true);
+    putAppFormData("sad", 12, data as AppForm).then((res) => {
+      res.status === 204
+        ? message.success("request sent successfully")
+        : message.error("something went wrong");
+      setLoading(false);
+    });
+  };
   return (
     <div style={{ paddingBottom: 75 }}>
       <MainHeader />
-      {data && !loading ? (
+      {data ? (
         <div style={{ paddingLeft: 20, paddingRight: 20, width: "100%" }}>
           <ImgUpload
             data={data.attributes.coverImage}
@@ -51,26 +62,17 @@ export default function AppMain() {
             updateData={updateData}
             data={data?.attributes.customisedQuestions}
           />
+          <Button
+            loading={loading}
+            type="primary"
+            style={{ maxWidth: 550, marginTop: 30, width: "100%" }}
+            onClick={submit}
+          >
+            Submit
+          </Button>
         </div>
       ) : (
-        <div style={{ paddingLeft: 20, paddingRight: 20, width: "100%" }}>
-          <AppCard
-            loading={loading}
-            CompStyle={{ height: 300, boxShadow: "none" }}
-          />
-          <AppCard
-            loading={loading}
-            CompStyle={{ height: 500, boxShadow: "none" }}
-          />
-          <AppCard
-            loading={loading}
-            CompStyle={{ height: 400, boxShadow: "none" }}
-          />
-          <AppCard
-            loading={loading}
-            CompStyle={{ height: 300, boxShadow: "none" }}
-          />
-        </div>
+        <LoadingScreen />
       )}
     </div>
   );

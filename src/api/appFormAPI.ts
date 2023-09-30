@@ -8,7 +8,7 @@ export const getAppFormData = (programID: string, version: number) => {
 export const putAppFormData = (
   programID: string,
   version: number,
-  body: any
+  body: AppForm
 ) => {
   return fetch(
     `https://stoplight.io/mocks/seifeleslam/task1-1/248480908
@@ -16,7 +16,7 @@ export const putAppFormData = (
     {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: body,
+      body: JSON.stringify({ data: body }),
     }
   );
 };
