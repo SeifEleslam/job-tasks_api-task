@@ -6,7 +6,6 @@ import { AppForm, Attributes } from "../types/appForm";
 import { Profile } from "./Profile";
 import { CustomizedQuestions } from "./CustomizedQuestions";
 import { getAppFormData, putAppFormData } from "../api/appFormAPI";
-import { AppCard } from "../components/AppCard";
 import { Button, message } from "antd";
 import { LoadingScreen } from "../components/LoadingScreen";
 
