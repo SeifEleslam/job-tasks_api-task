@@ -8,6 +8,17 @@ export const LABELS: { [key: string]: string } = {
   idNumber: "ID Number",
   dateOfBirth: "Date of Birth",
   gender: "Gender",
+  Paragraph: "Paragraph",
+  ShortAnswer: "Short Answer",
+  YesNo: "Yes or No",
+  Dropdown: "Dropdown",
+  MultipleChoice: "Multiple Choice",
+  Date: "Date",
+  Number: "Number",
+  FileUpload: "File Upload",
+  education: "Education",
+  experience: "Experience",
+  resume: "Resume",
 };
 
 export const QUESTIONTYPES = [
@@ -18,5 +29,5 @@ export const QUESTIONTYPES = [
   { value: "MultipleChoice", label: "Multiple Choice" },
   { value: "Date", label: "Date" },
   { value: "Number", label: "Number" },
-  { value: "FileUpload", label: "FileUpload" },
+  { value: "FileUpload", label: "File Upload" },
 ];

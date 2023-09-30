@@ -1,32 +1,46 @@
 import React, { useState } from "react";
 import { UploadOutlined, DeleteOutlined } from "@ant-design/icons";
 import { AppCard } from "../components/AppCard";
-import { Button } from "antd";
+import { Button, message } from "antd";
+import { Attributes } from "../types/appForm";
 
-export const ImgUpload = ({ loading }: { loading: boolean }) => {
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [imgURL, setImgURL] = useState<string>("");
+export const ImgUpload = ({
+  data,
+  updateData,
+}: {
+  data?: string;
+  updateData: (key: keyof Attributes, data: string) => void;
+}) => {
+  const [imgURL, setImgURL] = useState<string>(data ?? "");
+
   const afterUpload = (event: any) => {
     const file: File = event.target.files[0];
-    if (!file || !file.type.includes("image")) {
+    if (!file) {
+      message.error("Error occured");
       return;
     }
-
+    if (!file.type.includes("image")) {
+      message.error("Only Image types allowed");
+      return;
+    }
+    if (file.size > 1048576) {
+      message.error("Max size 1 MB");
+      return;
+    }
     if (file) {
-      setUploadedFile(file);
+      // here should upload the file and get the actual url
       const reader = new FileReader();
       reader.onload = () => {
         setImgURL(reader.result as string);
+        updateData("coverImage", reader.result as string);
       };
       reader.readAsDataURL(file);
     }
   };
-  const resetImg = () => {
-    setImgURL("");
-    setUploadedFile(null);
-  };
+  const resetImg = () => setImgURL("");
+
   return (
-    <AppCard title="Upload cover image" loading={false}>
+    <AppCard title="Upload cover image">
       {!imgURL ? (
         <label>
           <div

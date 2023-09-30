@@ -4,32 +4,8 @@ import {
   DragDropContext,
   Droppable,
   Draggable,
-  //   DraggingStyle,
-  //   NotDraggingStyle,
   DropResult,
 } from "react-beautiful-dnd";
-
-// const getItemStyle = (
-//   isDragging: boolean,
-//   draggableStyle: DraggingStyle | NotDraggingStyle | undefined
-// ) => ({
-//   // some basic styles to make the items look a bit nicer
-//   userSelect: "none",
-//   padding: grid * 2,
-//   margin: `0 0 ${grid}px 0`,
-
-//   // change background colour if dragging
-//   background: isDragging ? "lightgreen" : "grey",
-
-//   // styles we need to apply on draggables
-//   ...draggableStyle,
-// });
-
-// const getListStyle = (isDraggingOver) => ({
-//   background: isDraggingOver ? "lightblue" : "lightgrey",
-//   padding: grid,
-//   width: 250,
-// });
 
 export const DragableList = ({
   items,

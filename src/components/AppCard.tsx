@@ -2,14 +2,14 @@ import { Card } from "antd";
 import { CSSProperties, ReactNode } from "react";
 
 export const AppCard = ({
-  loading,
+  loading = false,
   CompStyle,
   children,
   title,
 }: {
-  loading: boolean;
+  loading?: boolean;
   CompStyle?: CSSProperties;
-  children: ReactNode;
+  children?: ReactNode;
   title?: string;
 }) => {
   return (
