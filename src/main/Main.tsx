@@ -44,7 +44,7 @@ export default function AppMain() {
     <div style={{ paddingBottom: 75 }}>
       <MainHeader />
       {data ? (
-        <div style={{ paddingLeft: 20, paddingRight: 20, width: "100%" }}>
+        <div className="max-w-full md:mx-16 mx-6 ">
           <ImgUpload
             data={data.attributes.coverImage}
             updateData={updateData}
@@ -64,7 +64,7 @@ export default function AppMain() {
           <Button
             loading={loading}
             type="primary"
-            style={{ maxWidth: 550, marginTop: 30, width: "100%" }}
+            style={{ maxWidth: "40rem", marginTop: 30, width: "100%" }}
             onClick={submit}
           >
             Submit

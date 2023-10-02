@@ -15,7 +15,7 @@ export const AppCard = ({
   return (
     <Card
       style={{
-        width: 550,
+        width: "40rem",
         maxWidth: "100%",
         marginTop: 16,
         boxShadow:
@@ -23,8 +23,8 @@ export const AppCard = ({
         ...CompStyle,
       }}
       loading={loading}
-      headStyle={{ background: "#e6f4ff" }}
-      title={title}
+      headStyle={{ background: "#e9efff" }}
+      title={<p className="text-xl text-[#4996ff]">{title}</p>}
     >
       {children}
     </Card>
