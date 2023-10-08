@@ -31,12 +31,13 @@ export const QuestionForm = ({
   onCancel: (index?: number) => void;
 }) => {
   const formRef = useRef<FormInstance>(null);
-  const [type, setType] = useState<QuestionTypeType | null>(
+  const [type, setType] = useState<QuestionTypeType | undefined>(
     data?.type ?? "Paragraph"
   );
 
   useEffect(() => {
     formRef.current?.resetFields();
+    setType(data?.type);
   }, [data]);
 
   const onFinish = (values: QuestionFormType) => {
